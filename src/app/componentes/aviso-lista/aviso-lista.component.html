@@ -1,0 +1,10 @@
+<h1>AVISOS:</h1>
+
+<ul>
+  <li *ngFor="let aviso of avisos">
+    {{aviso.titulo}}
+    <ion-button size="small" (click)="clickEliminar(aviso)">
+      <ion-icon slot=icon-only ios="logo-apple" md="trash-outline"></ion-icon>
+    </ion-button>  
+  </li>
+</ul>
