@@ -21,18 +21,25 @@ export class HomePage {
     addIcons({addCircleOutline})
   }
 
-  ngOnInit() {
+  ngOnInit() { 
+    console.log("HomePage::OnInit"); //prueba porque parece que no inicia al rutearlo (no lo hace)
     this.cargaInicial();
   }
 
+  ionViewWillEnter():void {
+    console.log("HomePage::ionViewWillEnter")//va a volver a cargar cuando lo rutee le guste o no
+    this.cargaInicial();
+  }
   async cargaInicial(){
-    const a:Aviso = {titulo:"A",descripcion:"B",foto:"C"}
-    await this.servicio.guardarAviso(a)
+    // const a:Aviso = {id: 1, titulo:"A", descripcion:"B"}
+    // await this.servicio.guardarAviso(a)
     this.listado = await this.servicio.recuperarAvisos();
   }
 
-  borrarAviso(aviso:Aviso){
+  async borrarAviso(aviso:Aviso){
     console.log("Eliminando aviso: "+aviso.titulo)
-    this.servicio.quitarAviso();
+    if(aviso.id)
+    await this.servicio.quitarAviso(aviso.id);
+    await this.cargaInicial();
   }
 }

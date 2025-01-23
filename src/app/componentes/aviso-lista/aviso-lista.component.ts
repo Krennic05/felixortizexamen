@@ -5,6 +5,7 @@ import { IonButton, IonIcon} from '@ionic/angular/standalone';
 import { addIcons } from 'ionicons';
 import { trashOutline } from 'ionicons/icons'
 
+
 @Component({
   selector: 'app-aviso-lista',
   templateUrl: './aviso-lista.component.html',

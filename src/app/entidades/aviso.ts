@@ -1,6 +1,7 @@
 export interface Aviso {
-    //id:number;
+    id?:number;
     titulo:string;
     descripcion:string;
-    foto:string;
+    // foto:string;
+    // fecha:Date;
 }

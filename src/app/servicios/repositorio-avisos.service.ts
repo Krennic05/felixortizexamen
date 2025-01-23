@@ -7,7 +7,7 @@ import { Preferences } from '@capacitor/preferences'
 })
 export class RepositorioAvisosService {
 
-private clave = "";
+private clave = "avisos";
 
   constructor() { }
 
@@ -16,15 +16,20 @@ private clave = "";
     return JSON.parse( listado.value ?? "[]");
   }
 
-  async guardarAviso(a:Aviso){
+  async guardarAviso(aviso:Aviso){
     const listado:Aviso[] = await this.recuperarAvisos()
-    listado.push(a)
-    Preferences.set({key: this.clave, value: JSON.stringify(listado)});
+    let id = 0;
+    if(listado?.length>0){
+      id = (listado?.length?listado?.length:0); //sistema para generar automaticamente una id
+    }
+    aviso.id = id + 1;
+    listado.push(aviso)
+    await Preferences.set({key: this.clave, value: JSON.stringify(listado)});
   }
 
-  async quitarAviso(){
-    const listado:Aviso[] = await this.recuperarAvisos()
-    listado.slice()
-    Preferences.remove({key: this.clave});
+  async quitarAviso(id: number): Promise<void> {
+    let listado = await this.recuperarAvisos()
+    listado = listado.filter((aviso: Aviso) => aviso.id !==id)
+    await Preferences.set({key: this.clave, value: JSON.stringify(listado)})
   } 
 }
