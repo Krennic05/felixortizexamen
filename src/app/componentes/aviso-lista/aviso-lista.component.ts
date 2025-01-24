@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Aviso } from 'src/app/entidades/aviso';
-import { IonButton, IonIcon, IonModal, IonButtons, IonHeader, IonContent, IonTitle} from '@ionic/angular/standalone';
+import { IonButton, IonIcon, IonModal, IonButtons, IonHeader, IonContent, IonTitle, IonImg } from '@ionic/angular/standalone';
 import { addIcons } from 'ionicons';
 import { trashOutline } from 'ionicons/icons'
 
@@ -10,7 +10,7 @@ import { trashOutline } from 'ionicons/icons'
   selector: 'app-aviso-lista',
   templateUrl: './aviso-lista.component.html',
   styleUrls: ['./aviso-lista.component.scss'],
-  imports:[IonHeader, IonContent, IonModal, CommonModule, IonButton, IonButtons, IonIcon, IonTitle],
+  imports:[IonHeader, IonContent, IonModal, CommonModule, IonButton, IonButtons, IonIcon, IonTitle, IonImg],
   standalone: true,
 })
 export class AvisoListaComponent  implements OnInit {

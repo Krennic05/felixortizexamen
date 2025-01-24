@@ -42,8 +42,4 @@ export class HomePage {
     await this.servicio.quitarAviso(id);
     await this.cargaInicial();
   }
-
-  // async confirmarBorrarAviso(){
-    
-  // }
 }

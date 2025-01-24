@@ -2,7 +2,9 @@
 
 <ul>
   <li *ngFor="let aviso of avisos">
-    <h2>{{aviso.titulo+":"}}</h2><p>{{" "+aviso.descripcion}}</p>
+    <h2>{{aviso.titulo+":"}}</h2>
+    <ion-img [src]="'data:image/jpeg;base64,'+aviso.foto"></ion-img>
+    <p>{{" "+aviso.descripcion}}</p>
     <p>{{aviso.fecha | date: 'dd-MM-yyyy'}}</p>
     <!-- aqui utilizamos un pipe para establecer el formato deseado para la fecha -->
     <ion-button size="small" (click)="clickEliminar(aviso)">

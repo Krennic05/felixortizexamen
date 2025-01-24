@@ -16,7 +16,9 @@
       #descripcionInput="ngModel"
       label="Descripcion" 
       placeholder="" 
-      labelPlacement="stacked" />  
+      labelPlacement="stacked" />
+    <ion-button (click)="tomarFoto()">Tomar foto</ion-button> 
+    <!-- prueba boton para tomar fotos  -->
     <ion-button 
       [disabled]="!tituloInput.valid || !descripcionInput.valid" 
       (click)="agregarAviso();tituloInput.control.markAsPristine();tituloInput.control.markAsUntouched()"

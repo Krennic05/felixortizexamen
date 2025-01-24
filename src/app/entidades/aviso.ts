@@ -3,5 +3,5 @@ export interface Aviso {
     titulo:string;
     descripcion:string;
     fecha?:Date;
-    // foto:string;
+    foto:string;
 }
