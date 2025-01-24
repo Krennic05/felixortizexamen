@@ -26,18 +26,14 @@ export class CrearAvisoComponent  implements OnInit {
   ) {
     addIcons({addCircleOutline}),
     
-async () => { //la ampoyetita me decia que esto va aqui
-    //  [routerLink]="['/app-home']" //aqui comparaba direccion, estaba equibocada, era home x'D
-  }
+async () => { } //la ampolleta me hizo poner esto aqui, asi que lo puse
 }
 
   ngOnInit() {}
 
   async agregarAviso(){
-    // this.onAvisoAgregado.emit([this.titulo,this.descripcion])
-    // this.titulo = ""
-    // this.descripcion = ""
-    const aviso:Aviso = {titulo:this.titulo,descripcion:this.descripcion}
+    const aviso:Aviso = {titulo:this.titulo,descripcion:this.descripcion,fecha:new Date()}
+    //la fecha se establece automaticamente en la fecha actual
     console.log("Aviso agregado")
     await this.servicio.guardarAviso(aviso)
     await this.router.navigate(["/home"]);//usar var para rutas

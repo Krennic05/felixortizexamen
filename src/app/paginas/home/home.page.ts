@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { AvisoListaComponent } from '../../componentes/aviso-lista/aviso-lista.component';
-import { IonHeader, IonToolbar, IonTitle, IonContent, IonButton, IonButtons, IonIcon } from '@ionic/angular/standalone';
+import { IonHeader, IonToolbar, IonTitle, IonContent, IonButton, IonButtons, IonIcon, IonModal } from '@ionic/angular/standalone';
 import { Aviso } from '../../entidades/aviso';
 import { RepositorioAvisosService } from '../../servicios/repositorio-avisos.service';
 import { addIcons } from 'ionicons';
@@ -16,7 +16,7 @@ import { RouterLink } from '@angular/router';
 export class HomePage {
 
   listado:Aviso[] = []
-
+  
   constructor(private servicio:RepositorioAvisosService) {
     addIcons({addCircleOutline})
   }
@@ -36,10 +36,14 @@ export class HomePage {
     this.listado = await this.servicio.recuperarAvisos();
   }
 
-  async borrarAviso(aviso:Aviso){
-    console.log("Eliminando aviso: "+aviso.titulo)
-    if(aviso.id)
-    await this.servicio.quitarAviso(aviso.id);
+  async borrarAviso(id:number){
+    //console.log("Eliminando aviso: "+aviso.titulo)
+    if(id>=0)
+    await this.servicio.quitarAviso(id);
     await this.cargaInicial();
   }
+
+  // async confirmarBorrarAviso(){
+    
+  // }
 }

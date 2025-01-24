@@ -22,9 +22,11 @@ private clave = "avisos";
     if(listado?.length>0){
       id = (listado?.length?listado?.length:0); //sistema para generar automaticamente una id
     }
+    // let fecha = Date.now()
     aviso.id = id + 1;
     listado.push(aviso)
     await Preferences.set({key: this.clave, value: JSON.stringify(listado)});
+    console.log(listado)
   }
 
   async quitarAviso(id: number): Promise<void> {

@@ -2,9 +2,24 @@
 
 <ul>
   <li *ngFor="let aviso of avisos">
-    {{aviso.titulo+":"}}{{" "+aviso.descripcion}}
+    <h2>{{aviso.titulo+":"}}</h2><p>{{" "+aviso.descripcion}}</p>
+    <p>{{aviso.fecha | date: 'dd-MM-yyyy'}}</p>
+    <!-- aqui utilizamos un pipe para establecer el formato deseado para la fecha -->
     <ion-button size="small" (click)="clickEliminar(aviso)">
       <ion-icon slot=icon-only ios="logo-apple" md="trash-outline"></ion-icon>
     </ion-button>  
   </li>
 </ul>
+
+<ion-modal [isOpen]="isModalOpen"> 
+  <ng-template>
+    <ion-header>
+      <ion-title>Confirmación</ion-title>      
+    </ion-header>
+    <ion-content>¿Estas seguro de que quieres eliminar este anuncio?</ion-content>
+        <ion-buttons slot="end">
+          <ion-button (click)="confirmarEliminacion(false)">No</ion-button>
+          <ion-button (click)="confirmarEliminacion(true)">Si</ion-button>
+        </ion-buttons>
+  </ng-template>
+</ion-modal>
